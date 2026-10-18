@@ -6,7 +6,8 @@
 
 [![arXiv](https://img.shields.io/badge/arXiv-paper-b31b1b.svg)](https://arxiv.org/abs/2610.18861)
 [![Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-models%20%26%20data-yellow.svg)](https://huggingface.co/collections/togethercomputer/hybridagent)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![X](https://img.shields.io/badge/X-thread-000000.svg?logo=x&logoColor=white)](https://x.com/Jiaru_Zou/status/2110400256647340476)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-post-0A66C2.svg?logo=linkedin&logoColor=white)](https://lnkd.in/p/g_3PW9PS)
 
 [Jiaru Zou](https://scholar.google.com/citations?user=GzLTey4AAAAJ)<sup>1,2</sup>, [Yunzhe Qi](https://scholar.google.com/citations?user=Gt17_A0AAAAJ)<sup>3,4</sup>, [Sirui Chen](https://csr16.github.io/)<sup>3</sup>, [Federico Bianchi](https://federicobianchi.io/)<sup>2</sup>, [Shang Zhu](https://shang-zhu.github.io/)<sup>2</sup>, [Pan Lu](https://lupantech.github.io/)<sup>1</sup>, [Jingrui He](https://www.hejingrui.org/)<sup>3</sup>, [James Zou](https://www.james-zou.com/)<sup>1,2</sup>
 
