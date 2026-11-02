@@ -32,6 +32,8 @@ pip install -e .
 cp .env.example .env   # TAVILY_API_KEY for the search tool
 ```
 
+Optional: set `HYBRID_SEARCH_PROVIDER=youcom` and `YDC_API_KEY` to use [You.com](https://you.com) search instead of Tavily. It is an external third-party service, separate from this repo's models and code. The search tool returns the same `Page i: ...` observations either way.
+
 ## 📁 Repository
 
 | Directory | Contents |

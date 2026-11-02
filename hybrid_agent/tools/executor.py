@@ -13,6 +13,7 @@ from typing import Dict, Optional
 from .base import BaseTool
 from .python_tool import PythonTool
 from .search_tool import TavilySearchTool
+from .youcom_search_tool import YouComSearchTool
 
 logger = logging.getLogger(__name__)
 
@@ -96,13 +97,23 @@ def build_tool_executor(
     search_result_length: int = 1000,
     *,
     require_search: bool = True,
+    search_provider: str | None = None,
 ) -> ToolExecutor:
-    """Python interpreter + live search (TAVILY_API_KEY from the environment)."""
+    """Python interpreter + live search.
+
+    Search defaults to Tavily (TAVILY_API_KEY). ``search_provider="youcom"`` (or
+    HYBRID_SEARCH_PROVIDER=youcom) switches to You.com, which reads YDC_API_KEY.
+    """
     executor = ToolExecutor()
     executor.register_tool(PythonTool(python_path=sys.executable, timeout=python_timeout))
-    key = os.environ.get("TAVILY_API_KEY", "")
+    provider = (search_provider or os.environ.get("HYBRID_SEARCH_PROVIDER") or "tavily").strip().lower()
+    if provider not in ("tavily", "youcom"):
+        raise ValueError(f"Unknown search provider {provider!r}; expected 'tavily' or 'youcom'")
+    env_var = "YDC_API_KEY" if provider == "youcom" else "TAVILY_API_KEY"
+    key = os.environ.get(env_var, "")
     if key:
-        executor.register_tool(RetryingSearchTool(TavilySearchTool(
+        tool_cls = YouComSearchTool if provider == "youcom" else TavilySearchTool
+        executor.register_tool(RetryingSearchTool(tool_cls(
             api_key=key,
             max_results=search_max_results,
             result_length=search_result_length,
@@ -110,5 +121,5 @@ def build_tool_executor(
             retry_delay=2.0,
         )))
     elif require_search:
-        raise RuntimeError("TAVILY_API_KEY is required for the search tool (set it in .env)")
+        raise RuntimeError(f"{env_var} is required for the search tool (set it in .env)")
     return executor
