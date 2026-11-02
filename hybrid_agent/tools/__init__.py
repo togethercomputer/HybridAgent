@@ -5,6 +5,7 @@ from .base import BaseTool
 from .executor import RetryingSearchTool, ToolExecutor, build_tool_executor
 from .python_tool import PythonTool
 from .search_tool import TavilySearchTool
+from .youcom_search_tool import YouComSearchTool
 
 __all__ = [
     "BaseTool",
@@ -12,5 +13,6 @@ __all__ = [
     "RetryingSearchTool",
     "TavilySearchTool",
     "ToolExecutor",
+    "YouComSearchTool",
     "build_tool_executor",
 ]
